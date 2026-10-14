@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#090A10"
+    android:fitsSystemWindows="true">
+
+    <!-- ======================================================== -->
+    <!-- 1. FULL-SCREEN RETRO HI-FI PLAYER DECK (ALL AROUND SCREEN) -->
+    <!-- ======================================================== -->
+    <LinearLayout
+        android:id="@+id/playerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="visible">
+
+        <!-- Top Header Bar -->
+        <LinearLayout
+            android:id="@+id/playerHeaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="4dp">
+
+            <TextView
+                android:id="@+id/tvBrandTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="⚡ RETROAMP [1997 HI-FI]"
+                android:textColor="#00FF66"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnSkinPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:fontFamily="monospace"
+                android:text="🎨 SKIN"
+                android:textSize="10sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="0dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp" />
+
+            <Button
+                android:id="@+id/btnEqualizer"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:fontFamily="monospace"
+                android:text="🎚️ EQ"
+                android:textSize="10sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="0dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:layout_marginStart="4dp" />
+
+            <Button
+                android:id="@+id/btnOpenLibraryTop"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:fontFamily="monospace"
+                android:text="📂 LIB"
+                android:textSize="10sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="0dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- LCD Monitor Card (High Contrast Glowing Display) -->
+        <LinearLayout
+            android:id="@+id/lcdScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#021405"
+            android:padding="10dp"
+            android:layout_marginTop="6dp">
+
+            <!-- Status Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvTrackNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="TRK 01/14"
+                    android:textColor="#00FF66"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvStatusIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text=" [READY]"
+                    android:textColor="#00FF66"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="6dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvAudioSpecs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="320 KBPS • STEREO 44.1 kHz"
+                    android:textColor="#00FF66"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <!-- Large Marquee Title -->
+            <TextView
+                android:id="@+id/tvMarqueeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:fontFamily="monospace"
+                android:text="*** RETROAMP KOTLIN MUSIC PLAYER - READY ***"
+                android:textColor="#00FF66"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <!-- Artist and Album Subtitle -->
+            <TextView
+                android:id="@+id/tvArtistAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="Select a track from library to start playback"
+                android:textColor="#88FF88"
+                android:textSize="11sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginTop="1dp" />
+
+            <!-- Digital Clock & Spectrum Visualizer Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp">
+
+                <!-- Glowing LCD Digital Time -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:id="@+id/tvLcdTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:text="00:00"
+                        android:textColor="#00FF66"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        android:includeFontPadding="false" />
+
+                    <TextView
+                        android:id="@+id/tvLcdTotalTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:text="/ 00:00"
+                        android:textColor="#00FF66"
+                        android:textSize="11sp"
+                        android:alpha="0.8" />
+                </LinearLayout>
+
+                <!-- High-Resolution Real-time Spectrum Visualizer -->
+                <com.retroamp.musicplayer.ui.VisualizerView
+                    android:id="@+id/visualizerView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Cassette Tape Monitor & VU Meters Deck (Center Screen Experience) -->
+        <LinearLayout
+            android:id="@+id/tapeDeckLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="#141620"
+            android:padding="8dp"
+            android:layout_marginTop="6dp">
+
+            <!-- Tape Deck Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvTapeDeckBadge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="[ ◓ TAPE MONITOR DECK ◓ ] • DOLBY HX-PRO"
+                    android:textColor="#00FF66"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEngineBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="24-BIT HARDWARE DAC"
+                    android:textColor="#8890A6"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <!-- Animated Dual Spinning Tape Reels -->
+            <com.retroamp.musicplayer.ui.CassetteDeckView
+                android:id="@+id/cassetteDeckView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="4dp" />
+
+            <!-- Stereo VU Meters -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:id="@+id/tvVuLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="L [ ■■■■■■□□□□ -3dB ]"
+                    android:textColor="#00FF66"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tvVuRight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="R [ ■■■■■■□□□□ -3dB ]"
+                    android:textColor="#00FF66"
+                    android:gravity="end"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- Hi-Fi Deck Developer Plaque -->
+            <TextView
+                android:id="@+id/tvDeveloperCredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="monospace"
+                android:text="★ DEVELOPED BY ANOOP KUMAR ★"
+                android:textColor="#00FF66"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:paddingTop="5dp"
+                android:paddingBottom="2dp" />
+        </LinearLayout>
+
+        <!-- Seekbar & Quick 10s Skip Row -->
+        <LinearLayout
+            android:id="@+id/timelineLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="6dp"
+            android:paddingHorizontal="2dp">
+
+            <!-- Progress Seekbar Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvSeekElapsed"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="00:00"
+                    android:textColor="#00FF66"
+                    android:textSize="10sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="1000"
+                    android:progressTint="#00FF66"
+                    android:thumbTint="#00FF66" />
+
+                <TextView
+                    android:id="@+id/tvSeekTotal"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="00:00"
+                    android:textColor="#00FF66"
+                    android:gravity="end"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- Quick Skip Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="2dp">
+
+                <Button
+                    android:id="@+id/btnRewind10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="⏪ -10 SEC"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#00FF66"
+                    android:paddingVertical="0dp"
+                    android:gravity="center"
+                    android:minHeight="0dp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnForward10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="⏩ +10 SEC"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#00FF66"
+                    android:paddingVertical="0dp"
+                    android:gravity="center"
+                    android:minHeight="0dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Master Transport Controls (Large Buttons) -->
+        <LinearLayout
+            android:id="@+id/transportLayout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnShuffle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="SHUF"
+                android:textSize="9sp"
+                android:fontFamily="monospace"
+                android:backgroundTint="#242838"
+                android:textColor="#8E95A5"
+                android:layout_marginEnd="2dp"
+                android:minHeight="0dp" />
+
+            <Button
+                android:id="@+id/btnPrev"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="⏮"
+                android:textSize="16sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:layout_marginEnd="2dp"
+                android:minHeight="0dp" />
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:text="▶"
+                android:textSize="20sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:layout_marginEnd="2dp"
+                android:minHeight="0dp" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="⏹"
+                android:textSize="16sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:layout_marginEnd="2dp"
+                android:minHeight="0dp" />
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="⏭"
+                android:textSize="16sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:layout_marginEnd="2dp"
+                android:minHeight="0dp" />
+
+            <Button
+                android:id="@+id/btnRepeat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="REP"
+                android:textSize="9sp"
+                android:fontFamily="monospace"
+                android:backgroundTint="#242838"
+                android:textColor="#8E95A5"
+                android:minHeight="0dp" />
+        </LinearLayout>
+
+        <!-- Volume Slider Bar -->
+        <LinearLayout
+            android:id="@+id/volumeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="4dp">
+
+            <TextView
+                android:id="@+id/tvVolLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="🔊 VOL"
+                android:textColor="#00FF66"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbVolume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="80"
+                android:progressTint="#00FF66"
+                android:thumbTint="#00FF66" />
+
+            <TextView
+                android:id="@+id/tvVolValue"
+                android:layout_width="38dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="80%"
+                android:textColor="#00FF66"
+                android:gravity="end"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Prominent Bottom Button to Open Music Library -->
+        <Button
+            android:id="@+id/btnOpenLibraryBottom"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="monospace"
+            android:text="📂 OPEN MUSIC LIBRARY (0 TRACKS) ➔"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:backgroundTint="#242838"
+            android:textColor="#00FF66"
+            android:gravity="center"
+            android:minHeight="0dp" />
+
+        <!-- Bottom Screen Developer Credit / Status Footer -->
+        <TextView
+            android:id="@+id/tvFooterCredit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="monospace"
+            android:text="✦ RETRO HI-FI DECK • DEVELOPED BY ANOOP KUMAR ✦"
+            android:textColor="#00FF66"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp" />
+    </LinearLayout>
+
+    <!-- ======================================================== -->
+    <!-- 2. SEPARATE FULL-SCREEN MUSIC LIBRARY SCREEN             -->
+    <!-- ======================================================== -->
+    <LinearLayout
+        android:id="@+id/libraryContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#0A0B10"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <!-- Top Library Header -->
+        <LinearLayout
+            android:id="@+id/libraryHeaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="2dp">
+
+            <Button
+                android:id="@+id/btnBackToPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:fontFamily="monospace"
+                android:text="← PLAYER"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="0dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp" />
+
+            <TextView
+                android:id="@+id/tvLibraryTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="🎵 MUSIC LIBRARY"
+                android:textColor="#00FF66"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnScanStorage"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:fontFamily="monospace"
+                android:text="SCAN ↻"
+                android:textSize="11sp"
+                android:backgroundTint="#242838"
+                android:textColor="#00FF66"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="0dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp" />
+        </LinearLayout>
+
+        <!-- Library Screen Developer Credit -->
+        <TextView
+            android:id="@+id/tvLibraryDevCredit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="monospace"
+            android:text="★ DEVELOPED BY ANOOP KUMAR ★"
+            android:textColor="#00FF66"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:paddingVertical="2dp" />
+
+        <!-- Search Bar with Clear Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_search"
+            android:paddingHorizontal="8dp"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔍"
+                android:textSize="13sp"
+                android:layout_marginEnd="6dp" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Search tracks, artists, albums..."
+                android:textColorHint="#6C728A"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:background="@null"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/btnClearSearch"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:gravity="center"
+                android:text="✕"
+                android:textColor="#8E95A5"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Format Filter Chips Row -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="6dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="ALL"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#00FF66"
+                    android:textColor="#000000"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/chipMp3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="MP3"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#8E95A5"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/chipFlac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="FLAC"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#8E95A5"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/chipWav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="WAV"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#8E95A5"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/chipM4a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="M4A / AAC"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#8E95A5"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/chipOgg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="OGG / OPUS"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:backgroundTint="#242838"
+                    android:textColor="#8E95A5"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Library Summary Info Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="4dp"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:id="@+id/tvLibrarySummary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="Showing 0 tracks • Tap any track to play"
+                android:textColor="#8E95A5"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tvCurrentPlayingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="▶ PLAYING"
+                android:textColor="#00FF66"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Track List (Full Height Scrollable) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTracks"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="2dp"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
+
+    </LinearLayout>
+
+</FrameLayout>

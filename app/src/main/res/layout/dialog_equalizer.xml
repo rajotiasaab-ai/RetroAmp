@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#1E1F26"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvEqTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="🎛 RETRO 5-BAND HARDWARE EQUALIZER"
+        android:textColor="#00FF00"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:id="@+id/eqBandsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Bass Boost section -->
+    <TextView
+        android:id="@+id/tvBassBoostLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="BASS BOOST AMPLIFIER"
+        android:textColor="#00FF00"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+    <SeekBar
+        android:id="@+id/sbBassBoost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="1000"
+        android:progressTint="#00FF00"
+        android:thumbTint="#00FF00"
+        android:layout_marginTop="4dp" />
+
+    <Button
+        android:id="@+id/btnEqClose"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="monospace"
+        android:text="APPLY &amp; CLOSE"
+        android:textColor="#00FF00"
+        android:backgroundTint="#343642"
+        android:textSize="11sp"
+        android:layout_marginTop="12dp" />
+
+</LinearLayout>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="winamp_green">#00FF00</color>
+    <color name="winamp_dark_green">#003300</color>
+    <color name="winamp_lcd_bg">#051205</color>
+    <color name="winamp_chassis">#23242A</color>
+    <color name="winamp_chassis_light">#3A3B45</color>
+    <color name="winamp_chassis_dark">#121316</color>
+    <color name="winamp_btn_bg">#343642</color>
+    <color name="winamp_btn_border">#555869</color>
+    <color name="winamp_accent">#00FF41</color>
+    <color name="iconBackground">#121318</color>
+</resources>
+
